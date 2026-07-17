@@ -1,26 +1,53 @@
+import { useState } from "react";
+
 export default function AddApplication(){
-  const forForm = [
-        {key: "company", label: "Company", type: "text"},
-        {key: "role", label: "Role", type: "text"},
-        {key: "status", label: "Status", type: "radio"},
-        {key: "date", label: "Date", type: "calendar"},
-        {key: "notes", label: "Notes", type: "text"},
+  interface appDetailsType {
+    company: string;
+    role: string;
+    status: "Applied" | "Interview" | "Offer" | "Rejected" | "Ghosted";
+    date: Date;
+    note: string;
+  }
         
-        
-      ] as const;
+  const [appDetails, setAppDetails] = useState<appDetailsType | null>(null);      
+
+     
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
+  e.preventDefault();
+}
+
   return(
     <>
-      <form>
-        {forForm.map(item => (
-          <div key={item.key}>
-            <label htmlFor={item.key}>{item.label}</label>
-            {if (1 === 1) {
-              
-            }}
-            <input type={item.type} name={item.key} id={item.key} />
+      <form className="applicationForm" onSubmit={handleSubmit}>
+        <div className="formContainer">
+          <div className="formDiv">
+            <label className="formLabel">Company</label>
+            <input className="inputBox" type="text" name="company" id="company" />
           </div>
-        ))}
+          <div className="formDiv">
+            <label className="formLabel">Role</label>
+            <input className="inputBox" type="text" name="role" id="role" />
+          </div>
+          <div className="formDiv">
+            <label className="formLabel">Status</label>
+            <input className="inputBox" type="text" name="status" id="status" />
+          </div>
+          <div className="formDiv">
+            <label className="formLabel">Date</label>
+            <input className="inputBox" type="date" name="date" id="date" />
+          </div>
+          <div className="formDiv">
+            <label className="formLabel">Notes</label>
+            <input className="inputBox" type="text" name="notes" id="notess" />
+          </div>
+        </div>
         
+        <div>
+          <button type="submit">
+            Add Application
+          </button>
+        </div>
+          
       </form>
     </>
   )

@@ -13,3 +13,25 @@
 li{
   padding: 10px
 }
+.applicationForm{
+  display: block;
+  
+}
+.inputBox{
+  width: 140px;
+}
+
+.formContainer{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  justify-content:flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.formLabel{
+  font-size: 15px;
+}
+.formDiv{
+  display: flex;
+  flex-direction: column;
+}
