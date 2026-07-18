@@ -10,5 +10,6 @@ export default function Home() {
     <Stats/>
     <AddApplication/>
     <Applications/>
+    {/* do I see something here? yes i did */}
   </>
 };

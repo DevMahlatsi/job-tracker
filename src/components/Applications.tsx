@@ -90,9 +90,9 @@ export default function Applications() {
   return(
     <>
       <p>
-        <table border={1}>
-          <thead>
-            <tr>
+        <table className="my-table">
+          <thead className="my-thead">
+            <tr className="my-tr">
               <th>
                 Company
               </th>
@@ -114,23 +114,21 @@ export default function Applications() {
               
             </tr>
           </thead>
-          <tbody>
+          <tbody className="my-tbody">
             {applicationList.map( item => (
-              <>
-                <tr>
+                <tr className="my-tr" key={item.company}>
                   <td>{item.company}</td>
                   <td>{item.role}</td>
                   <td>{item.status}</td>
                   <td>{item.date}</td>
                   <td>{item.notes}</td>
-                  {/* <td>{item</td> */}
+                  <td>🗑️|🖊️</td>
                   
                 </tr>
-              </>
             ))}
           </tbody>
           <tfoot>
-            
+            <h6>Then here we supposed to add pagination stats and stuff and then maybe a button on the right side to go to the next page.</h6>
           </tfoot>
         </table>
       </p>
