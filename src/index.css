@@ -98,16 +98,35 @@ li{
   align-items: center;
   font-size: 13px;
   gap: 20px;
+  border-radius: 10px;
+
 }
 .register-form{
   display: flex;
 }
 
 .testtest{
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start;
   
 }
 .realreal{
   display: flex;
   justify-content: center;
+}
+.submitButton{
+  border: none;
+  border-radius: 10px;
+  padding: 14px 22px;
+  background-color: #1f3864;
+  color: white;;
+}
+.submitButton:hover{
+  cursor: pointer;
+}
+.eye{
+  background-color: #1f3864;
+  border: solid #1f3864 1px;
 }
