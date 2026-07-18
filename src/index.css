@@ -1,5 +1,6 @@
 #root{
   font-family: 'Courier New', Courier, monospace;
+  color:#1f3864;
 }
 .stats-bar{
   display: flex;
@@ -9,14 +10,36 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   
   flex-wrap: wrap;
+  color: white;
+  background-color: #1f3864;
 }
 li{
   padding: 10px
 }
 .applicationForm{
-  display: block;
+  background-color: #1f3864;
+  color: white;
+  border-radius: 10px;
+  gap: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  
   
 }
+.addApplication{
+  background-color: yellowgreen;
+  font-weight: 600;
+  font-size: medium;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 20px;
+}
+.addApplication:hover{
+  cursor: pointer
+}
+
 .inputBox{
   width: 140px;
 }
@@ -24,9 +47,10 @@ li{
 .formContainer{
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
-  justify-content:flex-start;
+  justify-content:space-around;
   flex-wrap: wrap;
   gap: 16px;
+  padding: 15px;
 }
 .formLabel{
   font-size: 15px;

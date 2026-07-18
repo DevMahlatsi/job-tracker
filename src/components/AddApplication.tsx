@@ -43,7 +43,7 @@ export default function AddApplication(){
         </div>
         
         <div>
-          <button type="submit">
+          <button className="addApplication" type="submit">
             Add Application
           </button>
         </div>
