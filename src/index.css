@@ -130,3 +130,9 @@ li{
   background-color: #1f3864;
   border: solid #1f3864 1px;
 }
+a{
+  text-decoration: underline;
+}
+a:hover{
+  cursor: pointer;
+}
