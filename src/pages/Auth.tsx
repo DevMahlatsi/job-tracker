@@ -4,7 +4,7 @@ import { IoEyeSharp } from "react-icons/io5";
 import { supabase } from "../supabase-client";
 export default function Auth() {
   const [isRegistering, setIsRegistering] = useState(true);
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(true)
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -31,9 +31,18 @@ export default function Auth() {
     }
     else{
       //it's just another day and we are just signing in.
+      // const {data, error} = await supabase.auth.signInWithPassword({
+      //   email: email,
+      //   password: password
+      // })
     }
   }
-  const handleAuthMethod = (e: React.MouseEvent<HTMLFormElement>) => setIsRegistering(!isRegistering)
+  const handleAuthMethod = (e: React.MouseEvent<HTMLFormElement>) =>{
+    setIsRegistering(!isRegistering)
+    setEmail("")
+    setPassword("");
+    setUsername("");
+  } 
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {setPassword(e.target.value);};
   const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) =>{setUsername(e.target.value);}
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) =>{
