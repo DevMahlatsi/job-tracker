@@ -1,23 +1,41 @@
-#root{
+/* ==========================================================================
+   Global & Base Layout
+   ========================================================================== */
+
+#root {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color:#1f3864;
+  color: #1f3864;
   padding: 10px 20px;
 }
-.stats-bar{
+
+li {
+  padding: 10px;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Dashboard & Application Stats
+   ========================================================================== */
+
+.stats-bar {
   display: flex;
   justify-content: space-around;
   list-style-type: none;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  
   flex-wrap: wrap;
   color: white;
   background-color: #1f3864;
 }
-li{
-  padding: 10px
-}
-.applicationForm{
+
+.applicationForm {
   background-color: #1f3864;
   color: white;
   border-radius: 10px;
@@ -25,11 +43,9 @@ li{
   display: flex;
   justify-content: space-around;
   align-items: center;
-
-  
-  
 }
-.addApplication{
+
+.addApplication {
   background-color: #2563EB;
   font-weight: 600;
   font-size: medium;
@@ -38,101 +54,245 @@ li{
   padding: 7px 20px;
   color: white;
 }
-.addApplication:hover{
-  cursor: pointer
+
+.addApplication:hover {
+  cursor: pointer;
 }
 
-.inputBox{
+.inputBox {
   width: 140px;
 }
 
-.formContainer{
+.formContainer {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
-  justify-content:space-around;
+  justify-content: space-around;
   flex-wrap: wrap;
   gap: 16px;
   padding: 15px;
 }
-.formLabel{
+
+.formLabel {
   font-size: 15px;
 }
-.formDiv{
+
+.formDiv {
   display: flex;
   flex-direction: column;
 }
-.my-thead{
-  border: green 1px solid;
-  background-color: #1f3864;
-  color: white;
-  border-radius:10px;
-  margin: 15px;
-}
-.my-table{
+
+/* ==========================================================================
+   Table Styles
+   ========================================================================== */
+
+.my-table {
   width: 100%;
   border-collapse: collapse;
-  
   border: #1f3864 1px solid;
   border-radius: 10px;
 }
-.my-tr{
-  border-bottom: gray 2px solid;
-  
-  /* background-color: red; */
+
+.my-thead {
+  border: green 1px solid;
+  background-color: #1f3864;
+  color: white;
+  border-radius: 10px;
+  margin: 15px;
 }
+
+.my-tr {
+  border-bottom: gray 2px solid;
+}
+
 .my-tr td {
   padding: 12px;
-  /* border-right: 1px solid green;  */
   text-align: left;
 }
-.my-tbody{
+
+.my-tbody {
   border: #1f3864 solid 1px;
 }
 
-.sign-in-form{
-  display: inline-flex;
-  justify-content: center;
+/* ==========================================================================
+   Auth Page Styles (Updated)
+   ========================================================================== */
+
+.auth-container {
+  display: flex;
   flex-direction: column;
-  border: #1f3864 1px dotted;
-  padding: 20px;
   align-items: center;
-  font-size: 13px;
-  gap: 20px;
-  border-radius: 10px;
-
-}
-.register-form{
-  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  min-height: 80vh;
 }
 
-.testtest{
+.auth-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.auth-header h1 {
+  font-size: 2.25rem;
+  color: #1f3864;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.auth-header p {
+  color: #5a6e85;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.auth-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+  border: 1px solid #e2e8f0;
+  width: 100%;
+  max-width: 420px;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.auth-card-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.auth-card-header h2 {
+  font-size: 1.5rem;
+  color: #1f3864;
+  margin: 0 0 8px 0;
+}
+
+.auth-card-header p {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.auth-error {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.auth-form {
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  align-items: flex-start;
-  
+  gap: 18px;
 }
-.realreal{
+
+.form-group {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
 }
-.submitButton{
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f3864;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #1e293b;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper input {
+  padding-right: 40px;
+}
+
+.eye-button {
+  position: absolute;
+  right: 10px;
+  background: transparent;
   border: none;
-  border-radius: 10px;
-  padding: 14px 22px;
-  background-color: #1f3864;
-  color: white;;
-}
-.submitButton:hover{
+  color: #64748b;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  padding: 4px;
+  transition: color 0.2s ease;
 }
-.eye{
+
+.eye-button:hover {
+  color: #1f3864;
+}
+
+.submitButton {
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
   background-color: #1f3864;
-  border: solid #1f3864 1px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 8px;
 }
-a{
+
+.submitButton:hover {
+  background-color: #162a4d;
+}
+
+.submitButton:active {
+  transform: scale(0.99);
+}
+
+.submitButton:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.auth-toggle {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  font-size: inherit;
   text-decoration: underline;
 }
-a:hover{
-  cursor: pointer;
+
+.link-button:hover {
+  color: #1d4ed8;
 }
