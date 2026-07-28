@@ -22,34 +22,78 @@ export default function Auth() {
     setErrorMessage("");
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    setErrorMessage("");
-
+  const handleRegister = async () => {
     try {
-      if (isRegistering) {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            data: {
-              first_name: username,
-            },
+      setLoading(true);
+      setErrorMessage("");
+      
+      const { error: signUpError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            first_name: username,
           },
-        });
-        if (error) setErrorMessage(error.message);
+        },
+      });
+      
+      if (signUpError) {
+        setErrorMessage(signUpError.message);
       } else {
-        const { error } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
-        if (error) setErrorMessage(error.message);
+        // Optional: Show success message or redirect
+        console.log("Registration successful!");
+        // You might want to redirect to login or dashboard here
       }
-    } catch (err: any) {
-      setErrorMessage("An unexpected error occurred.");
+    } catch (error) {
+      console.error(error);
+      setErrorMessage("An unexpected error occurred. Please try again.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleLogin = async () => {
+    try {
+      setLoading(true);
+      setErrorMessage("");
+      
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      
+      if (signInError) {
+        setErrorMessage(signInError.message);
+      } else {
+        // Optional: Redirect to dashboard
+        console.log("Login successful!");
+      }
+    } catch (error) {
+      console.error(error);
+      setErrorMessage("An unexpected error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!email || !password) {
+      setErrorMessage("Please fill in all required fields.");
+      return;
+    }
+    
+    if (isRegistering && !username) {
+      setErrorMessage("Please enter your name.");
+      return;
+    }
+
+    if (isRegistering) {
+      await handleRegister();
+    } else {
+      await handleLogin();
     }
   };
 
@@ -82,8 +126,12 @@ export default function Auth() {
                 type="text"
                 placeholder="John Doe"
                 value={username}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setUsername(e.target.value);
+                  setErrorMessage(""); // Clear error on input
+                }}
                 required
+                disabled={loading}
               />
             </div>
           )}
@@ -96,8 +144,12 @@ export default function Auth() {
               type="email"
               placeholder="you@example.com"
               value={email}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setEmail(e.target.value);
+                setErrorMessage(""); // Clear error on input
+              }}
               required
+              disabled={loading}
             />
           </div>
 
@@ -110,21 +162,30 @@ export default function Auth() {
                 type={showPassword ? "text" : "password"}
                 placeholder="••••••••"
                 value={password}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setPassword(e.target.value);
+                  setErrorMessage(""); // Clear error on input
+                }}
                 required
+                disabled={loading}
               />
               <button
                 type="button"
                 className="eye-button"
                 onClick={handleShowPassword}
                 aria-label={showPassword ? "Hide password" : "Show password"}
+                disabled={loading}
               >
                 {showPassword ? <FaEyeSlash /> : <IoEyeSharp />}
               </button>
             </div>
           </div>
 
-          <button className="submitButton" type="submit" disabled={loading}>
+          <button 
+            className="submitButton" 
+            type="submit" 
+            disabled={loading}
+          >
             {loading
               ? "Processing..."
               : isRegistering
@@ -137,14 +198,24 @@ export default function Auth() {
           {isRegistering ? (
             <p>
               Already have an account?{" "}
-              <button type="button" className="link-button" onClick={toggleAuthMode}>
+              <button 
+                type="button" 
+                className="link-button" 
+                onClick={toggleAuthMode}
+                disabled={loading}
+              >
                 Sign in
               </button>
             </p>
           ) : (
             <p>
               Don't have an account?{" "}
-              <button type="button" className="link-button" onClick={toggleAuthMode}>
+              <button 
+                type="button" 
+                className="link-button" 
+                onClick={toggleAuthMode}
+                disabled={loading}
+              >
                 Register
               </button>
             </p>
