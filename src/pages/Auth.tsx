@@ -2,9 +2,11 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import { FaEyeSlash } from "react-icons/fa";
 import { IoEyeSharp } from "react-icons/io5";
 import { supabase } from "../supabase-client";
+import { useNavigate } from "react-router-dom";
 
 export default function Auth() {
-  const [isRegistering, setIsRegistering] = useState(true);
+  const navigate = useNavigate()
+  const [isRegistering, setIsRegistering] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -40,9 +42,8 @@ export default function Auth() {
       if (signUpError) {
         setErrorMessage(signUpError.message);
       } else {
-        // Optional: Show success message or redirect
         console.log("Registration successful!");
-        // You might want to redirect to login or dashboard here
+
       }
     } catch (error) {
       console.error(error);
@@ -66,6 +67,9 @@ export default function Auth() {
         setErrorMessage(signInError.message);
       } else {
         // Optional: Redirect to dashboard
+            navigate('/dashboard', { 
+      state: { welcome: true } 
+    })
         console.log("Login successful!");
       }
     } catch (error) {
@@ -79,7 +83,7 @@ export default function Auth() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    // Basic validation
+    
     if (!email || !password) {
       setErrorMessage("Please fill in all required fields.");
       return;
