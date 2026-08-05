@@ -1,15 +1,9 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 export default function AddApplication(){
-  interface appDetailsType {
-    company: string;
-    role: string;
-    status: "Applied" | "Interview" | "Offer" | "Rejected" | "Ghosted";
-    date: Date;
-    note: string;
-  }
+
         
-  const [appDetails, setAppDetails] = useState<appDetailsType | null>(null);      
+  // const [appDetails, setAppDetails] = useState<appDetailsType | null>(null);
 
      
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
