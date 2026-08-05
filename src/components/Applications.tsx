@@ -80,10 +80,10 @@ export default function Applications() {
             <tbody className="my-tbody">
             {applications.map((app) => (
                 <tr className="my-tr" key={app.id}>
-                  <td>{app.company}</td>
+                  <td>{app.company_name}</td>
                   <td>{app.role}</td>
                   <td>{app.status}</td>
-                  <td>{app.date}</td>
+                  <td>{app.date_applied}</td>
                   <td>{app.notes}</td>
                   <td>🗑️|🖊️</td>
                 </tr>
